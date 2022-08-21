@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 04:51:15 by minjungk          #+#    #+#             */
-/*   Updated: 2022/08/21 21:52:36 by minjungk         ###   ########.fr       */
+/*   Updated: 2022/08/22 03:38:18 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# ifndef OPEN_MAX
-#  define OPEN_MAX 1024
-# endif
+typedef struct s_stream
+{
+	int				fd;
+	char			read_buf[BUFFER_SIZE + 1];
+	ssize_t			read_len;
+	struct s_stream	*next;
+}				t_stream;
 
 size_t	ft_strlen(const char *s);
 void	*ft_calloc(size_t count, size_t size);
