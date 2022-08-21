@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 05:46:00 by minjungk          #+#    #+#             */
-/*   Updated: 2022/08/21 21:55:52 by minjungk         ###   ########.fr       */
+/*   Updated: 2022/08/21 21:57:12 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*join(char *dst, char *src, size_t slen, int *err)
 {
@@ -41,7 +41,7 @@ static char	*join(char *dst, char *src, size_t slen, int *err)
 
 char	*get_next_line(int fd)
 {
-	static char	read_buf[BUFFER_SIZE + 1];
+	static char	read_buf[OPEN_MAX][BUFFER_SIZE + 1];
 	ssize_t		read_len;
 	ssize_t		idx;
 	char		*rtn;
@@ -55,14 +55,14 @@ char	*get_next_line(int fd)
 	{
 		if (++idx == BUFFER_SIZE)
 		{
-			rtn = join(rtn, read_buf, ft_strlen(read_buf), &err);
-			read_len = read(fd, read_buf, BUFFER_SIZE);
+			rtn = join(rtn, read_buf[fd], ft_strlen(read_buf[fd]), &err);
+			read_len = read(fd, read_buf[fd], BUFFER_SIZE);
 			if (read_len < 0 || err)
 				break ;
 			idx = 0;
 		}
-		if (idx == read_len || read_buf[idx] == '\n')
-			return (join(rtn, read_buf, idx + 1, &err));
+		if (idx == read_len || read_buf[fd][idx] == '\n')
+			return (join(rtn, read_buf[fd], idx + 1, &err));
 	}
 	free(rtn);
 	return (0);
