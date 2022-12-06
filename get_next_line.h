@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 04:51:15 by minjungk          #+#    #+#             */
-/*   Updated: 2022/08/21 10:51:47 by minjungk         ###   ########.fr       */
+/*   Updated: 2022/12/06 21:18:11 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1024
 # endif
 
 size_t	ft_strlen(const char *s);

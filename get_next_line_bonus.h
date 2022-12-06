@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 04:51:15 by minjungk          #+#    #+#             */
-/*   Updated: 2022/08/22 03:38:18 by minjungk         ###   ########.fr       */
+/*   Updated: 2022/12/06 21:22:37 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1024
 # endif
 
 typedef struct s_stream
